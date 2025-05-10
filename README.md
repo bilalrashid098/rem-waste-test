@@ -30,12 +30,23 @@ remwaste-test/
 │   │
 │   ├── components/
 │   │   ├── products/           # Product card components
+│   │   │   ├── FooterSelector.tsx
 │   │   │   ├── Card.tsx
 │   │   │   ├── index.ts
 │   │   │   └── type.ts
 │   │   ├── buttons/            # Reusable Button component
-│   │   └── ...                 # Other UI components (spinner, stepper, etc.)
-│   │
+│   │   │   ├── Button.tsx
+│   │   │   ├── index.ts
+│   │   │   └── type.ts
+│   │   ├── spinner/            # Reusable Spinner component
+│   │   │   ├── Spinner.tsx
+│   │   │   ├── index.ts
+│   │   │   └── type.ts
+│   │   └── buttons/            # Stepper component
+│   │       ├── stepper.tsx
+│   │       ├── index.ts
+│   │       └── type.ts
+│   │   
 │   ├── lib/
 │   │   └── axios.ts            # Axios instance with interceptors
 │   │
@@ -79,7 +90,7 @@ npm install
 Create a `.env` file in the root directory and add:
 
 ```env
-VITE_API_BASE_URL=https://your-api-url.com/api
+VITE_API_BASE_URL=https://app.wewantwaste.co.uk/api
 ```
 
 ### 4. Start the development server
