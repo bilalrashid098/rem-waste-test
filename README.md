@@ -1,54 +1,108 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# REM Waste – Product Listing Page Redesign
 
-Currently, two official plugins are available:
+This project is a front-end redesign task for REM Waste, built using **React**, **Vite**, and **TypeScript**. The goal is to implement a clean, modular product listing page using reusable components and API integration with robust architecture and styling.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** (with TypeScript)
+- **Vite** – Lightning-fast dev environment
+- **Tailwind CSS** – Utility-first styling
+- **React Router DOM v7** – Routing
+- **Axios** – API communication with interceptors
+- **ESLint** – Linting and code consistency
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 📁 Project Structure
+
+```
+remwaste-test/
+│
+├── public/                     # Static assets
+├── src/
+│   ├── assets/
+│   │   ├── images/             # Images used in UI
+│   │   └── style/
+│   │       └── global.css      # Global styles
+│   │
+│   ├── components/
+│   │   ├── products/           # Product card components
+│   │   │   ├── Card.tsx
+│   │   │   ├── index.ts
+│   │   │   └── type.ts
+│   │   ├── buttons/            # Reusable Button component
+│   │   └── ...                 # Other UI components (spinner, stepper, etc.)
+│   │
+│   ├── lib/
+│   │   └── axios.ts            # Axios instance with interceptors
+│   │
+│   ├── pages/
+│   │   └── home/
+│   │       ├── index.ts
+│   │       └── Home.tsx
+│   │
+│   ├── services/
+│   │   └── product.service.ts  # API calls related to products
+│   │
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── vite-env.d.ts
+│
+├── vite.config.ts
+├── tsconfig.json
+├── package.json
+└── eslint.config.js
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🔧 Getting Started
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/bilalrashid098/rem-waste-test.git
+cd rem-waste-test
 ```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Environment Setup
+
+Create a `.env` file in the root directory and add:
+
+```env
+VITE_API_BASE_URL=https://your-api-url.com/api
+```
+
+### 4. Start the development server
+
+```bash
+npm run dev
+```
+
+Visit `http://localhost:5173` in your browser.
+
+---
+
+## 📦 Scripts
+
+| Script            | Description                    |
+|-------------------|--------------------------------|
+| `npm run dev`     | Start the Vite dev server      |
+| `npm run build`   | Build for production           |
+| `npm run preview` | Preview production build       |
+| `npm run lint`    | Run ESLint for code linting    |
+
+---
+
+## 📄 License
+
+This project was developed as part of a technical evaluation for REM Waste and is not intended for public distribution.
