@@ -1,3 +1,5 @@
+import type { ReactElement } from "react";
+
 /**
  * Props for the Stepper component.
  */
@@ -23,7 +25,7 @@ export interface Step {
   title: string;
 
   /**
-   * Optional icon for the step, represented as a string (e.g., class name or image path).
+   * Optional icon for the step, represented as a svg icon 
    */
-  icon?: string;
+  icon?: ReactElement;
 }

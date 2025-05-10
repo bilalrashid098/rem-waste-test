@@ -15,17 +15,23 @@ import type { StepperProps } from "./type";
 const Stepper = ({ steps, current }: StepperProps) => {
   return (
     <section className="max-w-6xl mx-auto px-4 py-6">
-      <div className="flex flex-wrap md:flex-nowrap justify-between gap-4">
+      <div className="flex flex-wrap md:flex-nowrap justify-between gap-5">
         {steps.map((step, index) => (
           <div
             key={index}
-            className={`flex-1 text-center border-2  py-4 rounded-lg font-semibold ${
+            className={`flex-1 border-t-3 font-semibold flex items-center justify-between ${
               index <= current
                 ? "border-blue-500 text-blue-500 active"
                 : "border-gray-500 text-gray-500"
             }`}
           >
-            {step.title}
+            <div className="mt-3">
+              <span className="text-[1.5rem]">{step.icon}</span>
+              <span className="text-[1.1rem]">{step.title}</span>
+            </div>
+            <span className="text-[5rem] leading-[4rem] font-bold opacity-20">
+              {index + 1}
+            </span>
           </div>
         ))}
       </div>
