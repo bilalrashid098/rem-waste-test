@@ -2,6 +2,7 @@ import { GoAlertFill } from "react-icons/go";
 import ProductImage from "../../assets/images/demo.jpg";
 import { Button } from "../buttons";
 import type { CardProps } from "./type";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 /**
  * Card Component
@@ -21,7 +22,7 @@ const Card = ({ product, selected, onClick }: CardProps) => {
   const isSelected = product.id === selected?.id;
   return (
     <div
-      className={`bg-white/10 backdrop-blur-md shadow-md rounded-lg p-4 border relative hover:bg-white/15 transition-all ease-in-out ${
+      className={`bg-white/10 backdrop-blur-md shadow-md rounded-lg p-4 border relative hover:bg-white/15 transition-all ease-in-out flex flex-col ${
         isSelected
           ? "border-secondary"
           : "border-white/20 hover:border-white/30"
@@ -50,21 +51,23 @@ const Card = ({ product, selected, onClick }: CardProps) => {
         </span>
       </div>
 
-      <h2 className="text-xl font-semibold my-3">{`${product.size} Yard Skip`}</h2>
-      <p className="text-gray-300 flex items-center justify-between text-sm mb-2">
-        <span>Price before VAT:</span>
-        <span className="text-xl text-white font-bold">
-          £{product.price_before_vat}
-        </span>
-      </p>
-      <p className="text-gray-300 flex items-center justify-between text-sm mb-2">
-        <span>VAT:</span>
-        <span>{product.vat}%</span>
-      </p>
-      <p className="text-gray-300 flex items-center justify-between text-sm mb-2">
-        <span>Hire Period:</span>
-        <span>{product.hire_period_days} days</span>
-      </p>
+      <div className="grow">
+        <h2 className="text-xl font-semibold my-3">{`${product.size} Yard Skip`}</h2>
+        <p className="text-gray-300 flex items-center justify-between text-sm mb-2">
+          <span>Price before VAT:</span>
+          <span className="text-xl text-white font-bold">
+            £{product.price_before_vat}
+          </span>
+        </p>
+        <p className="text-gray-300 flex items-center justify-between text-sm mb-2">
+          <span>VAT:</span>
+          <span>{product.vat}%</span>
+        </p>
+        <p className="text-gray-300 flex items-center justify-between text-sm mb-2">
+          <span>Hire Period:</span>
+          <span>{product.hire_period_days} days</span>
+        </p>
+      </div>
 
       <Button
         className="mt-4 w-full"
@@ -72,6 +75,7 @@ const Card = ({ product, selected, onClick }: CardProps) => {
         onClick={onClick}
       >
         {isSelected ? "Selected" : "Select this skip"}
+        {!isSelected && <IoIosArrowRoundForward className="w-6 h-6 ms-2" />}
       </Button>
     </div>
   );

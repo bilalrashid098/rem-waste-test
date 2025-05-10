@@ -1,3 +1,4 @@
+import { IoIosArrowRoundForward } from "react-icons/io";
 import { Button } from "../buttons";
 import type { FooterSelectorProps } from "./type";
 
@@ -10,7 +11,7 @@ import type { FooterSelectorProps } from "./type";
 const FooterSelector = ({ product }: FooterSelectorProps) => {
   return (
     <div
-      className={`bg-[#3b5af9] backdrop-blur-md shadow-md transition-all ease-in-out fixed left-0 w-full py-4 ${
+      className={`bg-[#3b5af9] backdrop-blur-md shadow-md transition-all ease-in-out fixed left-0 w-full p-4 ${
         product ? "bottom-0" : "bottom-[-12.5rem]"
       }`}
     >
@@ -28,11 +29,12 @@ const FooterSelector = ({ product }: FooterSelectorProps) => {
 
         {/* Navigation Buttons */}
         <div className="flex items-center">
-          <Button className="me-3" variant="outline">
+          <Button className="me-3 px-7" variant="outline">
             Back
           </Button>
-          <Button className="me-3" color="dark">
+          <Button color="dark" className="px-4">
             Continue
+            <IoIosArrowRoundForward className="w-6 h-6 ms-2" />
           </Button>
         </div>
       </div>

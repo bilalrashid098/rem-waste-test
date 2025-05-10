@@ -19,7 +19,7 @@ const Button = ({
   variant = "solid",
   color = "primary",
   className = "",
-  spanClassName = "",
+  spanClassName = "flex items-center justify-center",
   wrapperClassName = "",
   spinnerSize = 2,
   spinnerColor = "text-white",
@@ -55,7 +55,7 @@ const Button = ({
   };
 
   const finalClassName = `
-    d-flex align-items-center justify-content-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-all duration-300
+    flex items-center justify-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-all duration-300
     ${colorVariants[color][variant]}
     ${className}
     ${isLoading ? "pointer-events-none opacity-70" : ""}

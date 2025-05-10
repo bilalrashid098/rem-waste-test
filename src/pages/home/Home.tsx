@@ -79,7 +79,7 @@ const Home = () => {
       <div className="glow-blur right-[-12.5rem] top-[100dvh]"></div>
 
       {/* Products Section */}
-      <section className="max-w-5xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <section className="max-w-5xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Error Handling */}
         {error && (
           <div className="bg-red-100 text-red-700 px-4 py-2 rounded-md">
