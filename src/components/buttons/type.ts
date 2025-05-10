@@ -24,11 +24,12 @@ export interface ButtonProps {
   variant?: "solid" | "outline";
 
   /**
-   * Color scheme of the button - primary (default) or secondary.
+   * Color scheme of the button - primary (default), secondary or dark.
    * - `primary`: Typically the main action color.
    * - `secondary`: Alternative color for less important actions.
+   * - `dark`: Alternative color for less important actions.
    */
-  color?: "primary" | "secondary";
+  color?: "primary" | "secondary" | "dark";
 
   /**
    * Additional class name(s) to apply to the button element.

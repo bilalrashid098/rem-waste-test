@@ -1,24 +1,32 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+/*=====================================
+=            Root Variables           =
+=====================================*/
 :root {
   --font-size: 1rem;
-  --font-family: system-ui, sans-serif;
+  --font-family: "Poppins", system-ui, sans-serif;
   --background-color: #121212;
   --color: #ffffff;
-  --blue: #0037c1;
+  --blue: #3b5af9;
   --dark-blue: #002da1;
   --gray: #9ca3af;
   --yellow: #eab308;
 }
 
-/* Box Sizing Reset */
+/*=====================================
+=        Global Element Styles        =
+=====================================*/
+
+/* Box-sizing reset to ensure consistent layout */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Set Default Font and Background */
+/* Base body styles including font, background, and text color */
 body {
   font-family: var(--font-family);
   font-size: var(--font-size);
@@ -27,4 +35,61 @@ body {
   color: var(--color);
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+}
+
+/*=====================================
+=         Utility Custom Styles       =
+=====================================*/
+
+/* Soft blur glow effect for background visuals */
+.glow-blur {
+  width: 50rem;
+  height: 50rem;
+  position: absolute;
+  background-color: #3b5af960;
+  filter: blur(200px);
+  border-radius: 9999px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/*=====================================
+=             Theme Colors            =
+=====================================*/
+
+/* Background color utilities */
+.bg-dark {
+  background-color: var(--background-color);
+}
+
+.bg-primary {
+  background-color: var(--blue);
+}
+
+.bg-secondary {
+  background-color: var(--dark-blue);
+}
+
+/* Text color utilities */
+.text-primary {
+  color: var(--blue);
+}
+
+.text-secondary {
+  color: var(--dark-blue);
+}
+
+/* Border color utilities */
+.border-primary {
+  border-color: var(--blue);
+}
+
+.border-secondary {
+  border-color: var(--dark-blue);
+}
+
+.border-dark {
+  border-color: var(--background-color);
 }

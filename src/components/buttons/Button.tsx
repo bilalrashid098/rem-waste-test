@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
-import styles from "./style.module.css";
 import type { ButtonProps } from "./type";
 import { Spinner } from "../spinner";
 
 /**
  * Reusable Button component
  *
- * This component conditionally renders either a `<button>` or a `<Link>` element
- * depending on whether the `url` prop is provided. It supports visual variants,
- * loading state, disabled state, custom classes, and click handling.
+ * Conditionally renders either a <button> or <Link> depending on the `url` prop.
+ * Supports visual variants (solid, outline), loading state, disabled state,
+ * custom classes, click handling, and more.
  *
  * @param {ButtonProps} props - Button configuration props
  * @returns {JSX.Element} The rendered button or link element
@@ -33,53 +32,68 @@ const Button = ({
   target = "",
   style = {},
 }: ButtonProps) => {
-  // Construct class based on variant and color
-  const btnClass = variant === "solid" ? color : `${variant}-${color}`;
+  // Define style variants based on color and variant props
+  const colorVariants = {
+    primary: {
+      solid:
+        "bg-primary border border-primary text-white hover:!bg-transparent hover:!border-white",
+      outline:
+        "bg-transparent text-white border border-white hover:!bg-primary hover:!border-primary hover:!text-white",
+    },
+    secondary: {
+      solid:
+        "bg-secondary border border-secondary text-white hover:bg-secondary/90 hover:border-secondary/90",
+      outline:
+        "bg-transparent text-secondary border border-secondary hover:bg-secondary hover:text-white",
+    },
+    dark: {
+      solid:
+        "bg-dark border border-dark text-white hover:!bg-transparent hover!:border-white hover:!border-white",
+      outline:
+        "bg-transparent text-dark border border-white hover:!bg-dark hover:!border-dark hover:!text-white",
+    },
+  };
+
+  const finalClassName = `
+    d-flex align-items-center justify-content-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-all duration-300
+    ${colorVariants[color][variant]}
+    ${className}
+    ${isLoading ? "pointer-events-none opacity-70" : ""}
+  `;
+
+  const content = isLoading ? (
+    <Spinner
+      size={spinnerSize}
+      color={spinnerColor}
+      className={spinnerClassName}
+    />
+  ) : (
+    <span className={spanClassName}>{children ?? title}</span>
+  );
 
   return (
     <div className={wrapperClassName}>
-      {/* Render a <Link> when a URL is provided */}
-      {url !== "" ? (
+      {url ? (
         <Link
           id={id}
           to={url}
           target={target}
-          className={`btn btn-${btnClass} d-flex align-items-center justify-content-center gap-2 ${
-            styles.button
-          } ${className} ${isLoading ? "pointer-events-none" : ""}`}
+          className={finalClassName}
           onClick={(event) => onClick?.(event)}
           style={style}
         >
-          {/* Show loading spinner if isLoading is true */}
-          {isLoading ? (
-            <div className={`spinner-border ${styles.spinner}`} role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          ) : (
-            <span className={spanClassName}>{children ?? title}</span>
-          )}
+          {content}
         </Link>
       ) : (
-        // Otherwise render a native HTML <button>
         <button
           id={id}
-          className={`btn btn-${btnClass} d-flex align-items-center justify-content-center gap-2 ${
-            styles.button
-          } ${className} ${isLoading ? "pointer-events-none" : ""}`}
+          className={finalClassName}
           type={type}
           disabled={disabled}
           onClick={(event) => onClick?.(event)}
           style={style}
         >
-          {isLoading ? (
-            <Spinner
-              size={spinnerSize}
-              color={spinnerColor}
-              className={`${spinnerClassName}`}
-            />
-          ) : (
-            <span className={spanClassName}>{children ?? title}</span>
-          )}
+          {content}
         </button>
       )}
     </div>

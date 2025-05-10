@@ -1,3 +1,4 @@
+import { GoAlertFill } from "react-icons/go";
 import ProductImage from "../../assets/images/demo.jpg";
 import { Button } from "../buttons";
 import type { CardProps } from "./type";
@@ -12,42 +13,66 @@ import type { CardProps } from "./type";
  * @component
  * @param {CardProps} props - Component props
  * @param {Product} props.product - Product object containing details to be rendered
+ * @param {Selected} props.selected - Product object containing select product details
+ * @param {onClick} props.onClick - Callback function on product selection
  *
  */
-const Card = ({ product }: CardProps) => {
+const Card = ({ product, selected, onClick }: CardProps) => {
+  const isSelected = product.id === selected?.id;
   return (
-    <div key={product.id} className="bg-gray-900 shadow-md rounded-lg p-4">
-      <img
-        src={ProductImage} // Using placeholder image as API response does not include image URL
-        alt={`Product ${product.id}`}
-        className="w-full h-48 object-cover rounded-md"
-      />
-
-      <h2 className="text-xl font-semibold mt-4">{`Size: ${product.size}m³`}</h2>
-      <p className="text-gray-600">
-        Price before VAT: £{product.price_before_vat}
-      </p>
-      <p className="text-gray-600">VAT: {product.vat}%</p>
-      <p className="text-gray-600">
-        Hire Period: {product.hire_period_days} days
-      </p>
-
-      <div className="mt-4 flex justify-between items-center">
-        <Button
-          className="bg-blue-500 text-white rounded-md"
-          onClick={() => alert(`Product ${product.id} added to cart`)} // Replace with your CTA logic
+    <div
+      className={`bg-white/10 backdrop-blur-md shadow-md rounded-lg p-4 border relative hover:bg-white/15 transition-all ease-in-out ${
+        isSelected
+          ? "border-secondary"
+          : "border-white/20 hover:border-white/30"
+      }`}
+    >
+      {product.allowed_on_road && (
+        <div
+          className={`text-sm p-3 bg-[#DCA725]/10 text-[#DCA725] flex items-center justify-center rounded-md mb-3`}
         >
-          Add to Cart
-        </Button>
-
+          <GoAlertFill className="w-5 h-5 me-3" />
+          Not allowed on road
+        </div>
+      )}
+      <div className="relative">
+        <img
+          src={ProductImage}
+          alt={`Product ${product.id}`}
+          className="w-full h-48 object-cover rounded-md"
+        />
         <span
-          className={`text-sm ${
-            product.allowed_on_road ? "text-green-500" : "text-red-500"
-          }`}
+          className={`${
+            isSelected ? "bg-secondary" : "bg-primary"
+          } font-semibold px-4 py-1 rounded-full text-sm absolute right-2 top-3`}
         >
-          {product.allowed_on_road ? "Allowed on road" : "Not allowed on road"}
+          {product.size} Yards
         </span>
       </div>
+
+      <h2 className="text-xl font-semibold my-3">{`${product.size} Yard Skip`}</h2>
+      <p className="text-gray-300 flex items-center justify-between text-sm mb-2">
+        <span>Price before VAT:</span>
+        <span className="text-xl text-white font-bold">
+          £{product.price_before_vat}
+        </span>
+      </p>
+      <p className="text-gray-300 flex items-center justify-between text-sm mb-2">
+        <span>VAT:</span>
+        <span>{product.vat}%</span>
+      </p>
+      <p className="text-gray-300 flex items-center justify-between text-sm mb-2">
+        <span>Hire Period:</span>
+        <span>{product.hire_period_days} days</span>
+      </p>
+
+      <Button
+        className="mt-4 w-full"
+        color={isSelected ? "secondary" : "primary"}
+        onClick={onClick}
+      >
+        {isSelected ? "Selected" : "Select this skip"}
+      </Button>
     </div>
   );
 };

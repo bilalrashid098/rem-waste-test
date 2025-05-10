@@ -21,15 +21,15 @@ const Stepper = ({ steps, current }: StepperProps) => {
             key={index}
             className={`flex-1 border-t-3 font-semibold flex items-center justify-between ${
               index <= current
-                ? "border-blue-500 text-blue-500 active"
+                ? "border-primary text-primary active"
                 : "border-gray-500 text-gray-500"
             }`}
           >
             <div className="mt-3">
               <span className="text-[1.5rem]">{step.icon}</span>
-              <span className="text-[1.1rem]">{step.title}</span>
+              <span className="text-[1rem]">{step.title}</span>
             </div>
-            <span className="text-[5rem] leading-[4rem] font-bold opacity-20">
+            <span className="text-[5rem] leading-[4rem] font-bold opacity-40">
               {index + 1}
             </span>
           </div>
