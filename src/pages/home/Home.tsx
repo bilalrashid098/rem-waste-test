@@ -8,6 +8,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { FiTruck } from "react-icons/fi";
 import { LuCreditCard, LuMapPin, LuShield } from "react-icons/lu";
 import { IoCalendarClearOutline } from "react-icons/io5";
+import { GoAlertFill } from "react-icons/go";
 
 /**
  * Home component – displays step-based UI for selecting and purchasing skip bins.
@@ -71,17 +72,18 @@ const Home = () => {
       <div className="glow-blur left-[-12.5rem] top-[12.5rem]"></div>
       <div className="glow-blur right-[-12.5rem] top-[100dvh]"></div>
 
+      {/* Error Handling */}
+      {error && (
+        <div className="max-w-5xl mx-auto px-4">
+          <p className="bg-red-100/20 text-red-400 px-4 py-2 rounded-md flex">
+            <GoAlertFill className="w-5 h-5 me-3" />
+            <div>{error}</div>
+          </p>
+        </div>
+      )}
+
       {/* Products Section */}
       <section className="max-w-5xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Error Handling */}
-        {error && (
-          <div className="bg-red-100 text-red-700 px-4 py-2 rounded-md">
-            <p>
-              <strong>Error:</strong> {error}
-            </p>
-          </div>
-        )}
-
         {/* Render shimmer loaders while product data is being fetched. The 'length' prop determines how many loaders to display. */}
         {loading && <ProductListingLoader length={10} />}
 
