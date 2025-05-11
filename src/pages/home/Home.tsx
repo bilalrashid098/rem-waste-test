@@ -82,8 +82,8 @@ const Home = () => {
           </div>
         )}
 
-        {/* Product Card Loader */}
-        {loading && <ProductListingLoader />}
+        {/* Render shimmer loaders while product data is being fetched. The 'length' prop determines how many loaders to display. */}
+        {loading && <ProductListingLoader length={10} />}
 
         {/* Render Product Cards */}
         {!loading &&
