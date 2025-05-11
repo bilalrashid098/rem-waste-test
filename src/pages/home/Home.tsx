@@ -85,7 +85,7 @@ const Home = () => {
       {/* Products Section */}
       <section className="max-w-5xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Render shimmer loaders while product data is being fetched. The 'length' prop determines how many loaders to display. */}
-        {loading && <ProductListingLoader length={10} />}
+        {loading && <ProductListingLoader length={9} />}
 
         {/* Render Product Cards */}
         {!loading &&
