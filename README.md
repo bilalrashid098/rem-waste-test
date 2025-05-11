@@ -42,6 +42,9 @@ remwaste-test/
 │   │   │   ├── Spinner.tsx
 │   │   │   ├── index.ts
 │   │   │   └── type.ts
+│   │   ├── shimmer/            # Reusable Shimmer component
+│   │   │   ├── Card.tsx
+│   │   │   └── index.ts
 │   │   └── buttons/            # Stepper component
 │   │       ├── stepper.tsx
 │   │       ├── index.ts
@@ -111,6 +114,13 @@ Visit `http://localhost:5173` in your browser.
 | `npm run build`   | Build for production           |
 | `npm run preview` | Preview production build       |
 | `npm run lint`    | Run ESLint for code linting    |
+
+---
+
+## 🔗 Live Previews
+
+- **Vercel Deployment**: [https://rem-waste-test.vercel.app/](https://rem-waste-test.vercel.app/)
+- **CodeSandbox Preview**: [https://732ly5-5173.csb.app/](https://732ly5-5173.csb.app/)
 
 ---
 
