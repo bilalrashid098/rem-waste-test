@@ -3,10 +3,10 @@ import type { Product } from "../../services/product.service";
 import productService from "../../services/product.service";
 import { Stepper } from "../../components/stepper";
 import { FooterSelector, ProductCard } from "../../components/products";
-import { Spinner } from "../../components/spinner";
-import { LuCreditCard, LuMapPin, LuShield } from "react-icons/lu";
+import { ProductListingLoader } from "./components";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FiTruck } from "react-icons/fi";
+import { LuCreditCard, LuMapPin, LuShield } from "react-icons/lu";
 import { IoCalendarClearOutline } from "react-icons/io5";
 
 /**
@@ -67,13 +67,6 @@ const Home = () => {
         </p>
       </header>
 
-      {/* Loading Indicator */}
-      {loading && (
-        <div className="flex items-center justify-center h-[20rem]">
-          <Spinner size={7} />
-        </div>
-      )}
-
       {/* Visual Glow Effects */}
       <div className="glow-blur left-[-12.5rem] top-[12.5rem]"></div>
       <div className="glow-blur right-[-12.5rem] top-[100dvh]"></div>
@@ -89,6 +82,9 @@ const Home = () => {
           </div>
         )}
 
+        {/* Product Card Loader */}
+        {loading && <ProductListingLoader />}
+
         {/* Render Product Cards */}
         {!loading &&
           products.length > 0 &&
@@ -102,7 +98,7 @@ const Home = () => {
           ))}
 
         {/* Footer selector that depends on selected product */}
-        <FooterSelector product={selected} />
+        {/* <FooterSelector product={selected} /> */}
       </section>
     </div>
   );
