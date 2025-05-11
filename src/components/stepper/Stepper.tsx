@@ -29,7 +29,7 @@ const Stepper = ({ steps, current }: StepperProps) => {
               <span className="text-[1.5rem]">{step.icon}</span>
               <span className="text-[1rem] lg:block hidden">{step.title}</span>
             </div>
-            <span className="text-[2.5rem] sm:text-[3rem] lg:text-[5rem] leading-[4rem] font-bold opacity-40">
+            <span className="text-[2.5rem] sm:text-[3rem] lg:text-[5rem] leading-[4rem] font-bold opacity-40 lg:mt-2">
               {index + 1}
             </span>
           </div>
