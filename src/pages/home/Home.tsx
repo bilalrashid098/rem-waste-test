@@ -55,7 +55,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen relative pb-20">
+    <div className="min-h-screen relative pb-30 sm:pb-20">
       {/* Stepper Navigation */}
       <Stepper current={current} steps={steps} />
 
@@ -98,7 +98,7 @@ const Home = () => {
           ))}
 
         {/* Footer selector that depends on selected product */}
-        {/* <FooterSelector product={selected} /> */}
+        <FooterSelector product={selected} />
       </section>
     </div>
   );

@@ -15,24 +15,32 @@ const FooterSelector = ({ product }: FooterSelectorProps) => {
         product ? "bottom-0" : "bottom-[-12.5rem]"
       }`}
     >
-      <div className="flex items-center justify-between max-w-6xl mx-auto">
+      <div className="flex sm:flex-row flex-col items-center justify-between max-w-6xl mx-auto">
         {/* Show selected product summary if available */}
         {product && (
-          <div className="flex items-center">
-            <span>{product.size} Yard Skip</span>
-            <span className="mx-5 text-4xl font-bold">
+          <div className="flex items-center mb-3 sm:mb-0">
+            <span className="order-1">{product.size} Yard Skip</span>
+            <span className="sm:mx-5 text-3xl sm:text-4xl font-bold order-last sm:order-2">
               £{product.price_before_vat}
             </span>
-            <span>{product.hire_period_days} day hire</span>
+            <span className="order-3 sm:m-0 me-4 ms-3">{product.hire_period_days} day hire</span>
           </div>
         )}
 
         {/* Navigation Buttons */}
-        <div className="flex items-center">
-          <Button className="me-3 px-7" variant="outline">
+        <div className="flex items-center sm:w-fit w-full">
+          <Button
+            className="px-7 sm:w-fit w-full"
+            wrapperClassName="sm:w-fit w-full me-3"
+            variant="outline"
+          >
             Back
           </Button>
-          <Button color="dark" className="px-4">
+          <Button
+            color="dark"
+            className="px-4 sm:w-fit w-full"
+            wrapperClassName="sm:w-fit w-full"
+          >
             Continue
             <IoIosArrowRoundForward className="w-6 h-6 ms-2" />
           </Button>
